@@ -1,0 +1,80 @@
+import React,{ useEffect } from "react"
+import axios from "axios"
+
+interface myAppProp {
+
+title : string
+
+}
+
+
+interface Users {
+
+name : {
+
+first : string,
+
+last : string 
+
+}
+
+login : {
+
+uuid : string 
+
+}
+
+email : string;
+
+}
+
+
+const App : React.FC<myAppProps> = (props)=>{
+
+const [users, setUsers] = useState<Users>([])
+
+const url: string = "https://randomuser.me/api/"
+
+
+useEffect(()=>{
+
+const getUsers = async ()=> {
+
+try{
+  
+const {data} = await axios.get(url)
+console.log(data)
+setUsers(data.results)
+
+}catch(err){
+
+console.log(error)
+
+  }
+
+}
+
+getUsers()
+
+
+},[])
+
+
+return (
+
+<div>
+
+
+</div>
+
+)
+
+}
+
+
+
+const Button = ({title} : {title: string })=>{
+
+return <button>{title}</button>
+
+}
